@@ -31,8 +31,14 @@ public class SondaController {
     @Autowired
     private ConsultaSondaService consultaSondaService;
 
+    @Autowired
+    private PousaSondaPlanetaService pousaSondaPlanetaService;
+
+    @Autowired
+    private RetiraSondaDoPlanetaService retiraSondaDoPlanetaService;
+
     @PostMapping("/sonda")
-    public ResponseEntity<SondaDomain> criaSonda(@RequestBody Map<String,Object> body) throws Exception {
+    public ResponseEntity<SondaDomain> criaSonda(@RequestBody Map<String,Object> body) {
         SondaDomain response = criaSondaService.execute(body);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
@@ -51,6 +57,16 @@ public class SondaController {
     public ResponseEntity<SondaDomain> andarSonda(@PathVariable String id) throws Exception {
         SondaDomain response = andarSondaService.execute(id);
         return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+    @PutMapping("/sonda/{sondaId}/planeta/{planetaId}")
+    public ResponseEntity<String> pousaSondaNoPlaneta(@PathVariable String sondaId,@PathVariable String planetaId) throws Exception {
+        pousaSondaPlanetaService.execute(sondaId,planetaId);
+        return new ResponseEntity<>("Sonda pousou no planeta: " + planetaId, HttpStatus.OK);
+    }
+    @PutMapping("/sonda/{sondaId}/retirar")
+    public ResponseEntity<String> retiraSondaDoPlaneta(@PathVariable String sondaId) throws Exception {
+        retiraSondaDoPlanetaService.execute(sondaId);
+        return new ResponseEntity<>("Sonda decolou", HttpStatus.OK);
     }
 
     @GetMapping("/sonda")

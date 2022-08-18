@@ -12,7 +12,6 @@ public class MapToSondaDomainAdapter implements Adapter<Map<String,Object>, Sond
     public SondaDomain cria(Map<String, Object> entrada) {
         SondaDomain sondaDomain = new SondaDomain();
         sondaDomain.setOrientacao(OrientacaoEnum.fromString(entrada.get("orientacao").toString()));
-        sondaDomain.setPlanetaId(UUID.fromString(entrada.get("planetaId").toString()));
         sondaDomain.setPosx(Integer.valueOf(entrada.get("posx").toString()));
         sondaDomain.setPosy(Integer.valueOf(entrada.get("posy").toString()));
         return sondaDomain;
