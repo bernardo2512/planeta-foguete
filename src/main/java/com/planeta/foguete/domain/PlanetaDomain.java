@@ -13,17 +13,17 @@ public class PlanetaDomain {
     private UUID id;
 
     @Column
-    private Integer[][] area;
+    private UUID[][] area;
 
     public UUID getId() {
         return id;
     }
 
-    public Integer[][] getArea() {
+    public UUID[][] getArea() {
         return area;
     }
 
-    public void setArea(Integer[][] area) {
+    public void setArea(UUID[][] area) {
         this.area = area;
     }
 }

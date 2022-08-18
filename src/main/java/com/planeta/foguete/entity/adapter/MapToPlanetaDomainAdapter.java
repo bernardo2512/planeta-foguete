@@ -4,6 +4,7 @@ import com.planeta.foguete.contratos.Adapter;
 import com.planeta.foguete.domain.PlanetaDomain;
 
 import java.util.Map;
+import java.util.UUID;
 
 public class MapToPlanetaDomainAdapter implements Adapter<Map<String,Object>, PlanetaDomain> {
     @Override
@@ -12,7 +13,7 @@ public class MapToPlanetaDomainAdapter implements Adapter<Map<String,Object>, Pl
         String x = entrada.get("areax").toString();
         String y = entrada.get("areay").toString();
 
-        planetaDomain.setArea(new Integer[Integer.parseInt(x)][Integer.parseInt(y)]);
+        planetaDomain.setArea(new UUID[Integer.parseInt(x)][Integer.parseInt(y)]);
         return planetaDomain;
     }
 }

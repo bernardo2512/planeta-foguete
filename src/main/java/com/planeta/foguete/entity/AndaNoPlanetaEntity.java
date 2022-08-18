@@ -6,6 +6,7 @@ import com.planeta.foguete.domain.SondaDomain;
 import com.planeta.foguete.enums.OrientacaoEnum;
 
 import java.util.Objects;
+import java.util.UUID;
 
 public class AndaNoPlanetaEntity implements Entity<PlanetaDomain> {
 
@@ -49,11 +50,11 @@ public class AndaNoPlanetaEntity implements Entity<PlanetaDomain> {
         return this.planeta;
     }
 
-    private Integer posicaoSondaNoPlaneta(){
+    private UUID posicaoSondaNoPlaneta(){
         return this.planeta.getArea()[this.sonda.getPosx()][this.sonda.getPosy()];
     }
 
     private void moveSondaNoPlaneta(){
-        this.planeta.getArea()[this.sonda.getPosx()][this.sonda.getPosy()] = 1;
+        this.planeta.getArea()[this.sonda.getPosx()][this.sonda.getPosy()] = this.sonda.getId();
     }
 }
