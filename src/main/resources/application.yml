@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: planeta-foguete
+  jpa:
+    database: POSTGRESQL
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false
+  database:
+    driverClassName: org.postgresql.Driver
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/db_planeta
+    username: postgres
+    password: root
+
+
+server:
+  port: 8088
+  servlet:
+    context-path: /api
+
