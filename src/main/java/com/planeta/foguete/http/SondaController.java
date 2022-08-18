@@ -32,7 +32,7 @@ public class SondaController {
     private ConsultaSondaService consultaSondaService;
 
     @PostMapping("/sonda")
-    public ResponseEntity<SondaDomain> criaSonda(@RequestBody Map<String,Object> body){
+    public ResponseEntity<SondaDomain> criaSonda(@RequestBody Map<String,Object> body) throws Exception {
         SondaDomain response = criaSondaService.execute(body);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
