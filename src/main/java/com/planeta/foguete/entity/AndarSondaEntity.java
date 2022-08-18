@@ -5,7 +5,6 @@ import com.planeta.foguete.domain.PlanetaDomain;
 import com.planeta.foguete.domain.SondaDomain;
 import com.planeta.foguete.enums.OrientacaoEnum;
 
-
 public class AndarSondaEntity implements Entity<SondaDomain> {
 
     private SondaDomain sonda;
