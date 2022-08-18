@@ -15,10 +15,13 @@ public class AndarSondaService {
     @Autowired
     private SalvaSondaDomainService salvaSondaDomainService;
 
+    @Autowired
+    private AndaDentroPlanetaService andaDentroPlanetaService;
+
     public SondaDomain execute(String id) throws Exception {
         UUID sondaId = UUID.fromString(id);
         SondaDomain sondaDomain = consultaSondaService.execute(sondaId);
-        SondaDomain sondaMovida = AndarSondaEntity.inicia(sondaDomain).geraSaida();
+        SondaDomain sondaMovida = andaDentroPlanetaService.execute(sondaDomain);
         return this.salvaSondaDomainService.execute(sondaMovida);
     }
 
