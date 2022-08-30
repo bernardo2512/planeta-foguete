@@ -1,19 +1,15 @@
 package com.planeta.foguete.entity;
 
-import com.planeta.foguete.contratos.Entity;
+import com.planeta.foguete.contratos.EntitySondaComPlaneta;
 import com.planeta.foguete.domain.PlanetaDomain;
 import com.planeta.foguete.domain.SondaDomain;
 
 import java.util.Objects;
 
-public class PousaSondaNoPlanetaEntity implements Entity<PlanetaDomain> {
-
-    private SondaDomain sondaDomain;
-    private PlanetaDomain planetaDomain;
+public class PousaSondaNoPlanetaEntity extends EntitySondaComPlaneta<PlanetaDomain> {
 
     private PousaSondaNoPlanetaEntity(SondaDomain sondaDomain,PlanetaDomain planetaDomain) throws Exception {
-        this.planetaDomain = planetaDomain;
-        this.sondaDomain = sondaDomain;
+        super(sondaDomain,planetaDomain);
         this.valida();
     }
 
@@ -23,8 +19,8 @@ public class PousaSondaNoPlanetaEntity implements Entity<PlanetaDomain> {
 
     @Override
     public PlanetaDomain geraSaida() {
-        this.planetaDomain.getArea()[this.sondaDomain.getPosx()][this.sondaDomain.getPosy()] = this.sondaDomain.getId();
-        return this.planetaDomain;
+        this.planeta.getArea()[this.sonda.getPosx()][this.sonda.getPosy()] = this.sonda.getId();
+        return this.planeta;
     }
 
     private void valida() throws Exception {
@@ -34,15 +30,15 @@ public class PousaSondaNoPlanetaEntity implements Entity<PlanetaDomain> {
     }
 
     private Boolean isPousoLivre(){
-        return Objects.isNull(this.planetaDomain.getArea()[this.sondaDomain.getPosx()][this.sondaDomain.getPosy()]);
+        return Objects.isNull(this.planeta.getArea()[this.sonda.getPosx()][this.sonda.getPosy()]);
     }
     private Boolean isSondaDentroPlaneta(){
         return this.isSondaAlturaPlaneta() && this.isSondaLarguraPlaneta();
     }
     private Boolean isSondaAlturaPlaneta(){
-        return this.sondaDomain.getPosx() <= this.planetaDomain.getArea()[0].length -1 && this.sondaDomain.getPosx() >= 0;
+        return this.sonda.getPosx() <= this.planeta.getArea()[0].length -1 && this.sonda.getPosx() >= 0;
     }
     private Boolean isSondaLarguraPlaneta(){
-        return this.sondaDomain.getPosy() <= this.planetaDomain.getArea().length -1 && this.sondaDomain.getPosy() >= 0;
+        return this.sonda.getPosy() <= this.planeta.getArea().length -1 && this.sonda.getPosy() >= 0;
     }
 }

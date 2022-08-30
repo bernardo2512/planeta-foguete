@@ -1,6 +1,7 @@
 package com.planeta.foguete.entity;
 
 import com.planeta.foguete.contratos.Entity;
+import com.planeta.foguete.contratos.EntitySondaComPlaneta;
 import com.planeta.foguete.domain.PlanetaDomain;
 import com.planeta.foguete.domain.SondaDomain;
 import com.planeta.foguete.enums.OrientacaoEnum;
@@ -8,14 +9,10 @@ import com.planeta.foguete.enums.OrientacaoEnum;
 import java.util.Objects;
 import java.util.UUID;
 
-public class AndaNoPlanetaEntity implements Entity<PlanetaDomain> {
+public class AndaNoPlanetaEntity extends EntitySondaComPlaneta<PlanetaDomain> {
 
-    private SondaDomain sonda;
-    private PlanetaDomain planeta;
-
-    private AndaNoPlanetaEntity(SondaDomain sonda, PlanetaDomain planeta){
-        this.sonda = sonda;
-        this.planeta = planeta;
+    private AndaNoPlanetaEntity(SondaDomain sonda, PlanetaDomain planeta) {
+        super(sonda,planeta);
     }
 
     public static AndaNoPlanetaEntity inicia(SondaDomain sonda, PlanetaDomain planeta){

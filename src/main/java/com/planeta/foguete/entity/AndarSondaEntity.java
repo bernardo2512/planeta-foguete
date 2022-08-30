@@ -1,18 +1,15 @@
 package com.planeta.foguete.entity;
 
 import com.planeta.foguete.contratos.Entity;
+import com.planeta.foguete.contratos.EntitySondaComPlaneta;
 import com.planeta.foguete.domain.PlanetaDomain;
 import com.planeta.foguete.domain.SondaDomain;
 import com.planeta.foguete.enums.OrientacaoEnum;
 
-public class AndarSondaEntity implements Entity<SondaDomain> {
-
-    private SondaDomain sonda;
-    private PlanetaDomain planeta;
+public class AndarSondaEntity extends EntitySondaComPlaneta<SondaDomain> {
 
     private AndarSondaEntity(SondaDomain sonda, PlanetaDomain planeta){
-        this.sonda = sonda;
-        this.planeta = planeta;
+        super(sonda,planeta);
     }
 
     public static AndarSondaEntity inicia(SondaDomain sonda, PlanetaDomain planeta){

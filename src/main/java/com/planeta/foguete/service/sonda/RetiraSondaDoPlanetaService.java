@@ -30,6 +30,6 @@ public class RetiraSondaDoPlanetaService {
         SondaDomain sondaDomain = consultaSondaService.execute(UUID.fromString(id));
         PlanetaDomain planetaDomain = this.consultaPlanetaService.execute(sondaDomain.getPlanetaId());
         this.salvaPlanetaDomainService.execute(RetiraSondaDoPlanetaEntity.inicia(sondaDomain,planetaDomain).geraSaida());
-        this.salvaSondaDomainService.execute(RetiraPlanetaDaSondaEntity.inicia(sondaDomain,planetaDomain).geraSaida());
+        this.salvaSondaDomainService.execute(RetiraPlanetaDaSondaEntity.inicia(sondaDomain).geraSaida());
     }
 }

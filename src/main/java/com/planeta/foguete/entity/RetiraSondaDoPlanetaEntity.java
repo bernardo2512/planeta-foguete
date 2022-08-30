@@ -1,26 +1,22 @@
 package com.planeta.foguete.entity;
 
-import com.planeta.foguete.contratos.Entity;
+import com.planeta.foguete.contratos.EntitySondaComPlaneta;
 import com.planeta.foguete.domain.PlanetaDomain;
 import com.planeta.foguete.domain.SondaDomain;
 
-public class RetiraSondaDoPlanetaEntity implements Entity<PlanetaDomain> {
+public class RetiraSondaDoPlanetaEntity extends EntitySondaComPlaneta<PlanetaDomain> {
 
-    private SondaDomain sondaDomain;
-    private PlanetaDomain planetaDomain;
-
-    private RetiraSondaDoPlanetaEntity(SondaDomain sondaDomain,PlanetaDomain planetaDomain){
-        this.planetaDomain = planetaDomain;
-        this.sondaDomain = sondaDomain;
+    private RetiraSondaDoPlanetaEntity(SondaDomain sonda,PlanetaDomain planeta){
+        super(sonda,planeta);
     }
 
-    public static RetiraSondaDoPlanetaEntity inicia(SondaDomain sondaDomain,PlanetaDomain planetaDomain){
-        return new RetiraSondaDoPlanetaEntity(sondaDomain,planetaDomain);
+    public static RetiraSondaDoPlanetaEntity inicia(SondaDomain sonda,PlanetaDomain planeta){
+        return new RetiraSondaDoPlanetaEntity(sonda,planeta);
     }
 
     @Override
     public PlanetaDomain geraSaida() {
-        this.planetaDomain.getArea()[this.sondaDomain.getPosx()][this.sondaDomain.getPosy()] = null;
-        return this.planetaDomain;
+        this.planeta.getArea()[this.sonda.getPosx()][this.sonda.getPosy()] = null;
+        return this.planeta;
     }
 }
